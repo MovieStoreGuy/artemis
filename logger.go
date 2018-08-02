@@ -85,6 +85,12 @@ func (i *instance) Start() {
 				for _, out := range i.output {
 					fmt.Fprintf(out, "[%s]\t%s\n", data.Level.String(), data.Data)
 				}
+				if data.Level == Fatal {
+					// Issue a signal to the process so that it knows it should die
+					if err := signalProcess(); err != nil {
+						panic(err)
+					}
+				}
 			}
 		}
 		i.done <- true
