@@ -30,6 +30,7 @@ var (
 
 func init() {
 	BufferSize = 100
+	GetInstance().Start()
 }
 
 // GetInstance will returns the logger singleton
