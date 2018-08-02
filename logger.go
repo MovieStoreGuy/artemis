@@ -8,11 +8,6 @@ import (
 	"sync"
 )
 
-type Entry struct {
-	Level Level
-	Data  string
-}
-
 type instance struct {
 	entries chan Entry
 	done    chan bool
