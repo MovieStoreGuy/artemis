@@ -35,6 +35,9 @@ func GetInstance() Log {
 		isnt = &instance{
 			level: Fatal,
 		}
+		runtime.SetFinalizer(isnt, func(inst *instance) {
+			inst.Stop()
+		})
 	})
 	return isnt
 }
